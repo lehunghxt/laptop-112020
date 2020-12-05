@@ -1,0 +1,26 @@
+1. Đăng nhập đăng ký User và Admin.
+    -Validate
+2. Cate: hiển thị, thêm, sữa, xóa.
+    -Validate, AJAX
+3. Product: hiển thị, thêm, sữa, xóa.
+    -Validate, AJAX
+4. Hiển thị sản phẩm ra trang user.
+5. Hiển thị sản phẩm chi tiết.
+6. Đăng nhập, đăng ký, quên mật khẩu.
+7. Giỏ hàng: thêm, sửa, xóa sản phẩm khổi giỏ hàng.
+8. Tiến hành thanh toán:
+    - Tên, địa chỉ, số điện thoại.
+    - Đặt hàng.
+9. Quản lý đơn hàng:
+    - Hiển thị tất cả đơn hàng.
+    - Đơn hàng chi tiết.
+    - Cập nhập trạng thái đơn hàng.
+10. Quản lý khách hàng.
+    - Xem thông tin khách hàng.
+    - Xem lịch sử mua hàng.
+    - Khóa tài khoản của khách hàng.
+11. Quản lý nhân viên.
+    - Tạo tài khoản nhân viên.
+    - Xem thông tin nhân viên.
+    - Xem lịch sử làm việc của nhân viên.
+    - Khóa tài khoản nhân viên.
