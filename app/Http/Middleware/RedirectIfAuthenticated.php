@@ -21,7 +21,7 @@ class RedirectIfAuthenticated
             return redirect('/admin/dashboard');
         }
         if ($guard == "customer" && Auth::guard("customer")->check()) {
-            return redirect('/');
+            return redirect('/')->with('flash_message_error', 'Bạn không có quyền truy cập !');
         }
         if (Auth::guard($guard)->check()) {
             return redirect('/');

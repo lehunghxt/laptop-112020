@@ -17,6 +17,7 @@ class CategoryController extends Controller
         return view('admin.categories.add_category');
     }
     public function addCategory(Request $request){
+
         $request->validate([
             'cate_name'    => 'required|unique:categories|max:255|min:3',
         ], [
