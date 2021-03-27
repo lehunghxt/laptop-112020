@@ -15,6 +15,9 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -27,6 +30,28 @@
             <!-- Main Content -->
             <div id="content">
                 <!-- Topbar -->
+                @if(Session::has('flash_message_error'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: '{{ Session::get('flash_message_error') }}',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    </script>
+                @endif
+                @if(Session::has('flash_message_success'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '{{ Session::get('flash_message_success') }}',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    </script>
+                @endif
                 @include('admin.layoutAdmin.topbar')
                 <!-- End of Topbar -->
 
@@ -78,6 +103,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+
     <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -99,8 +125,55 @@
             });
             });
         });
+        $('.delete').on('click', function(e){
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Bạn có chắc chắn muốn xóa không!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Có'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent().submit();
+                }
+            })
+        });
+        $('.btnChangeStatus').on('click', function(e){
+            var url = $(this).attr('ref');
+            var thiss = $(this);
+            var child = $(this).children();
+            var token    = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    _token: token,
+            },
+            success: function (res) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Đã thay đổi trạng thái !',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                if(res=="active"){
+                    child.removeClass('fas fa-ban');
+                    child.addClass('fas fa-check');
+                    thiss.removeClass('btn-outline-danger');
+                    thiss.addClass('btn-outline-success');
+                }else if(res == "disable"){
+                    child.removeClass('fas fa-check');
+                    child.addClass('fas fa-ban');
+                    thiss.removeClass('btn-outline-success');
+                    thiss.addClass('btn-outline-danger');
+               }
+            }
+            });
+        });
     </script>
-
 </body>
-
 </html>

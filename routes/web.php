@@ -66,6 +66,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('admin/edit-category/{id}', 'CategoryController@showEditCategory');
     Route::post('admin/edit-category/{id}', 'CategoryController@editCategory');
     Route::post('admin/delete-category/{id}', 'CategoryController@deleteCategory');
+    Route::post('admin/change-status-category/{id}', 'CategoryController@changeStatus');
     // Hiển thị - Thêm - Sữa - Xóa - Product
     Route::get('admin/list-products', 'ProductController@index');
 
@@ -77,6 +78,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('admin/edit-product/{id}', 'ProductController@showEditProduct');
     Route::post('admin/edit-product/{id}', 'ProductController@editProduct');
     Route::post('admin/delete-product/{id}', 'ProductController@deleteProduct');
+    Route::post('admin/change-status-product/{id}', 'ProductController@changeStatus');
 
     Route::get('admin/customers', 'AdminController@listCustomer');
     Route::post('admin/change-status-customer/{id}', 'AdminController@changeStatus');

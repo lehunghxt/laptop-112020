@@ -6,14 +6,14 @@
     </div>
     <div class="card-body">
         <form method="POST" action="{{ url('admin/edit-product/'.$product->id) }}" enctype="multipart/form-data">
-            <button type="submit" class="btn btn-primary">Cập nhập sản phẩm</button>
+            <button type="submit" class="btn btn-sm btn-primary">Cập nhập sản phẩm</button>
             <hr>
             {{ csrf_field() }}
             <div class="row">
                 <div class="col-2">
                     <div class="form-group">
                         <label for="cate_id">Hãng Laptop</label>
-                        <select name="cate_id" class="form-control" id="cate_id">
+                        <select name="cate_id" class="form-control form-control-sm" id="cate_id">
                             @foreach ($categories as $cate)
                                 <option {{($product->cate_id==$cate->id)?'selected':''}} value="{{ $cate->id }}">{{ $cate->cate_name }}</option>
                             @endforeach
@@ -26,7 +26,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="pro_name">Tên Sản Phẩm</label>
-                        <input type="text" class="form-control" value="{{ $product->pro_name }}" id="pro_name" name="pro_name" placeholder="Product Name" />
+                        <input type="text" class="form-control form-control-sm" value="{{ $product->pro_name }}" id="pro_name" name="pro_name" placeholder="Product Name" />
                         @if ($errors->has('pro_name'))
                             <span class="text-danger">{{ $errors->first('pro_name') }}</span>
                         @endif
@@ -40,7 +40,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="{{ $config->config_name }}">{{ $config->config_name }}</label>
-                            <select name="config_detail[{{ $config->id }}]" class="form-control" id="{{ $config->config_name }}">
+                            <select name="config_detail[{{ $config->id }}]" class="form-control form-control-sm" id="{{ $config->config_name }}">
                                 @foreach ($config->configDetail as $conf_detail)
                                     <option {{(in_array($conf_detail->config_detail_name, $config_info)?'selected':'')}} value="{{ $conf_detail->id }}">{{ $conf_detail->config_detail_name }}</option>
                                 @endforeach
@@ -58,7 +58,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="pro_price">Giá Tiền</label>
-                        <input type="text" class="form-control" value="{{ $product->pro_price }}" id="pro_price" name="pro_price" placeholder="Giá Tiền" />
+                        <input type="text" class="form-control form-control-sm" value="{{ $product->pro_price }}" id="pro_price" name="pro_price" placeholder="Giá Tiền" />
                         @if ($errors->has('pro_price'))
                             <span class="text-danger">{{ $errors->first('pro_price') }}</span>
                         @endif
@@ -67,7 +67,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="pro_qty">Số Lượng</label>
-                        <input type="number" class="form-control" value="{{ $product->pro_qty }}" id="pro_qty" name="pro_qty" placeholder="Số Lượng" />
+                        <input type="number" class="form-control form-control-sm" value="{{ $product->pro_qty }}" id="pro_qty" name="pro_qty" placeholder="Số Lượng" />
                         @if ($errors->has('pro_qty'))
                         <span class="text-danger">{{ $errors->first('pro_qty') }}</span>
                         @endif
@@ -77,7 +77,7 @@
             <hr>
             <div class="form-group">
                 <label for="pro_des">Mô Tả</label>
-                <textarea class="form-control" id="pro_des" name="pro_des" rows="3">{{ $product->pro_des }}</textarea>
+                <textarea class="form-control form-control-sm" id="pro_des" name="pro_des" rows="3">{{ $product->pro_des }}</textarea>
                 @if ($errors->has('pro_des'))
                     <span class="text-danger">{{ $errors->first('pro_des') }}</span>
                 @endif
@@ -85,7 +85,7 @@
             <hr>
             <div class="form-group">
                 <label for="pro_image">Hình Ảnh</label>
-                <input type="file" class="form-control" id="pro_image" name="pro_image"/>
+                <input type="file" class="form-control form-control-sm" id="pro_image" name="pro_image"/>
                 @if ($errors->has('pro_image'))
                     <span class="text-danger">{{ $errors->first('pro_image') }}</span>
                 @endif

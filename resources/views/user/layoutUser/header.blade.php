@@ -30,7 +30,7 @@
                                 ?>
                                 <a href="{{ url('getCart') }}">
                                     <i class="fa fa-shopping-cart"></i>
-                                     Giỏ Hàng <sup id="c_qty">({{$sum}})</sup>
+                                     Giỏ Hàng <sup>(</sup><sup id="c_qty">{{$sum}}</sup><sup>)</sup>
                                 </a>
                             </li>
                         </ul>
@@ -74,23 +74,25 @@
         </div>
     </div><!--/header-bottom-->
     @if(Session::has('flash_message_error'))
-        <div class="container">
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                {{ Session::get('flash_message_error') }}
-            </div>
-        </div>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: '{{ Session::get('flash_message_error') }}',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
     @endif
     @if(Session::has('flash_message_success'))
-    <div class="container">
-        <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {{ Session::get('flash_message_success') }}
-        </div>
-    </div>
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('flash_message_success') }}',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
     @endif
 </header><!--/header-->

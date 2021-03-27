@@ -10,16 +10,6 @@
             <span class="text">Thêm Cấu Hinh</span>
         </a>
     </div>
-    @if(Session::has('flash_message_error'))
-        <div class="alert alert-danger">
-            {{ Session::get('flash_message_error') }}
-        </div>
-    @endif
-    @if(Session::has('flash_message_success'))
-        <div class="alert alert-success">
-            {{ Session::get('flash_message_success') }}
-        </div>
-    @endif
     <div class="card-body">
         <div class="table-responsive">
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -28,26 +18,26 @@
                         <table class="table table-sm table-bordered dataTable text-center" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th rowspan="1" colspan="1">ID</th>
-                                    <th rowspan="1" colspan="1">Name</th>
-                                    <th rowspan="1" colspan="1">Action</th>
+                                    <th rowspan="1" colspan="1">STT</th>
+                                    <th rowspan="1" colspan="1">Tên cấu hình</th>
+                                    <th rowspan="1" colspan="1">Tùy chọn</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($configs as $config)
                                     <tr role="row" class="odd">
                                         <td>{{ $config->id }}</td>
-                                        <td>{{ $config->config_name }}</td>
+                                        <td align="left">{{ $config->config_name }}</td>
                                         <td>
-                                            <a href="{{ url('admin/list-config-detail/'.$config->id) }}" class="btn btn-info btn-circle">
+                                            <a style="width: 1.5rem;height:1.5rem;font-size:10px;" title="Thêm cấu hình chi tiết" href="{{ url('admin/list-config-detail/'.$config->id) }}" class="btn btn-info btn-circle">
                                                 <i class="fas fa-plus"></i>
                                             </a>
-                                            <a href="{{ url('admin/edit-config/'.$config->id) }}" class="btn btn-warning btn-circle">
+                                            <a style="width: 1.5rem;height:1.5rem;font-size:10px;" href="{{ url('admin/edit-config/'.$config->id) }}" class="btn btn-warning btn-circle">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <form method="POST" style="display: inline-block" action="{{ url('admin/delete_config/'.$config->id) }}">
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-circle">
+                                                <button style="width: 1.5rem;height:1.5rem;font-size:10px;" type="submit" class="btn btn-danger btn-circle delete">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>

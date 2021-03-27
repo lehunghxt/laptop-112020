@@ -2,7 +2,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Danh Sách Đơn Hàng</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách đơn hàng    </h6>
 
     </div>
     <div class="card-body">
@@ -10,16 +10,16 @@
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12">
-                        <table class="table table-bordered dataTable text-center" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <table class="table table-sm table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th rowspan="1" colspan="1">ID</th>
                                     <th rowspan="1" colspan="1">Mã đơn hàng</th>
-                                    <th rowspan="1" colspan="1">Khách hàng</th>
+                                    <th rowspan="1" colspan="1">Tên khách hàng</th>
                                     <th rowspan="1" colspan="1">Tổng tiền</th>
-                                    <th rowspan="1" colspan="1">Trạng thái</th>
+                                    <th rowspan="1" colspan="1">Trạng thái đơn hàng</th>
                                     <th rowspan="1" colspan="1">Thời gian</th>
-                                    <th rowspan="1" colspan="1">Action</th>
+                                    <th rowspan="1" colspan="1">Tùy chọn</th>
                                 </tr>
                             </thead>
                             <tbody>

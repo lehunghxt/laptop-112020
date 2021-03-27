@@ -17,14 +17,14 @@
             </div>
         </div>
         <div class="table-responsive cart_info text-center">
-            <h4>Danh sách địa chỉ:</h4>
+            <h4>Danh sách địa chỉ</h4>
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
-                        <td class="text-center">id</td>
-                        <td>address</td>
-                        <td>phone</td>
-                        <td style="width: 150px">action</td>
+                        <td class="text-center">STT</td>
+                        <td>Địa chỉ</td>
+                        <td>Số điện thoại</td>
+                        <td style="width: 150px">Chọn</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,8 +52,9 @@
             <br>
             <br>
             <br>
+
             <div class="table-responsive cart_info text-center">
-                <h4>Danh sách đơn hàng:</h4>
+                <h4>Danh sách đơn hàng</h4>
                 <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu">

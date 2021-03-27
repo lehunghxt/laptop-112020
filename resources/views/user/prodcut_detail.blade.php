@@ -20,7 +20,7 @@
                             <span style="display: flex;justify-content:space-between;align-items: center">
                                 <span style="font-size: 20px">{{ number_format($product->pro_price,0,',','.') }}đ</span>
                                 @if ($product->pro_status == 'active')
-                                    <form method="POST" action="{{ url('addCart') }}">
+                                    {{-- <form method="POST" action="{{ url('addCart') }}">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="pro_id" value="{{ $product->id }}">
                                         <input type="hidden" name="pro_code" value="{{ $product->pro_code }}">
@@ -28,7 +28,11 @@
                                             <i class="fa fa-shopping-cart"></i>
                                             Thêm vào giỏ hàng
                                         </button>
-                                    </form>
+                                    </form> --}}
+                                    <button onclick="addToCart(this);" ref1="{{ $product->id }}" ref2="{{ $product->pro_code }}" class="btn btn-default add-to-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Thêm vào giỏ hàng
+                                    </button>
                                 @else
                                     <button type="submit" class="btn btn-light disabled  add-to-cart">
                                         {{-- <i class="fa fa-shopping-cart"></i> --}}

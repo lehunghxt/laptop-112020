@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function customerLogout(Request $request){
+        $request->session()->forget('cart');
         Auth::guard('customer')->logout();
         return redirect('/');
     }

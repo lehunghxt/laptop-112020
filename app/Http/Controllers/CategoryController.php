@@ -63,4 +63,11 @@ class CategoryController extends Controller
         Category::where('id', $id)->delete();
         return redirect('admin/list-categories')->with('flash_message_success', 'Xóa thành thành công !');
     }
+    public function changeStatus(Request $request, $id){
+        $user = Category::where('id', $id)->first();
+        $status = ($user->cate_status=='disable') ? 'active':'disable';
+        Category::where('id', $id)->update(['cate_status'=> $status]);
+        return Category::where('id', $id)->first()->cate_status;
+        // return redirect()->back()->with('flash_message_success', 'Đã thay đổi trạng thái - '.$user->name.' !');
+    }
 }

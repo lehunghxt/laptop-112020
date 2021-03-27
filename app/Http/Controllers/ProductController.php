@@ -135,4 +135,9 @@ class ProductController extends Controller
         $product->delete();
         return redirect('admin/list-products')->with('flash_message_success', 'Đã xóa sản phẩm !');
     }
+    public function changeStatus(Request $request, $id){
+        $status = (Product::where('id', $id)->first()->pro_status=='disable') ? 'active':'disable';
+        Product::where('id', $id)->update(['pro_status'=> $status]);
+        return Product::where('id', $id)->first()->pro_status;
+    }
 }

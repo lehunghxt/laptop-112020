@@ -21,7 +21,7 @@ class IndexController extends Controller
 {
     public function index(){
         $categories = Category::with('indexProducts')->get();// lấy dữ liệu cho tab
-        $products = Product::take(3)->orderBy('created_at', 'DESC')->get(); // lấy ra lap mới nhất
+        $products = Product::take(4)->orderBy('created_at', 'DESC')->get(); // lấy ra lap mới nhất
         $proEachCate = Category::with('indexProducts')->get(); // lấy ra lap mỗi cate khác với cate
         $productRecomment = Product::all()->random(6);
         $productRecomment = (object) array_chunk($productRecomment->toArray(), 3); // lấy ra lap khác với lap mới nhất
@@ -73,8 +73,10 @@ class IndexController extends Controller
             $cartdata[$request->pro_code]['pro_qty']   = 1;
         }
         session()->put('cart' , $cartdata);
-        return redirect()->back()->with('flash_message_success', 'Đã thêm sản phẩm vào giỏ hàng !');
+        // return redirect()->back()->with('flash_message_success', 'Đã thêm sản phẩm vào giỏ hàng !');
+        return "done";
     }
+
     public function getCart(){
         $carts = session()->get('cart');
         if(empty($carts)) return redirect('/')->with('flash_message_error', 'Chưa có sản phẩm nào giỏ hàng !');
@@ -208,7 +210,7 @@ class IndexController extends Controller
         if($countPro == 0){
             return redirect('/')->with('flash_message_error', 'Sản phẩm bạn tìm không tồn tại !');
         }
-        $products = Product::where('pro_name', 'LIKE', '%'.$pro_name.'%')->paginate(9);
+        $products = Product::where('pro_name', 'LIKE', '%'.$pro_name.'%')->paginate(8);
         $proEachCate = Category::with('indexProducts')->get(); // lấy ra lap mỗi cate khác với cate
         $categories = Category::with('indexProducts')->get();
         $productRecomment = Product::all()->random(6);

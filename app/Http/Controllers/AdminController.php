@@ -28,7 +28,8 @@ class AdminController extends Controller
         $user = User::where('id', $id)->first();
         $status = ($user->status=='disable') ? 'active':'disable';
         User::where('id', $id)->update(['status'=> $status]);
-        return redirect()->back()->with('flash_message_success', 'Đã thay đổi trạng thái - '.$user->name.' !');
+        return User::where('id', $id)->first()->status;
+        // return redirect()->back()->with('flash_message_success', 'Đã thay đổi trạng thái - '.$user->name.' !');
     }
     public function listOrder(){
         $orders = Order::withCount('customer', 'orderDetail')->where('order_status', 'new')->get();
