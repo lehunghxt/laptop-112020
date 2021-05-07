@@ -24,6 +24,16 @@
             <i class="fas fa-cogs"></i>
             <span>Cấu hình</span></a>
     </li>
+    <li class="nav-item {{(preg_match("/config/i",$url))?'active':''}}">
+        <a class="nav-link" href="{{ url('admin/list-configs') }}">
+            <i class="fas fa-cogs"></i>
+            <span>Cấu hình hệ thống</span></a>
+    </li>
+    <li class="nav-item {{(preg_match("/config/i",$url))?'active':''}}">
+        <a class="nav-link" href="{{ url('admin/list-configs') }}">
+            <i class="fas fa-cogs"></i>
+            <span>Tài khoản quản trị</span></a>
+    </li>
     <li class="nav-item {{(preg_match("/categor/i",$url))?'active':''}}">
         <a class="nav-link" href="{{ url('admin/list-categories') }}">
             <i class="fas fa-box"></i>
